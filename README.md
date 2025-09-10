@@ -1,4 +1,4 @@
-<img width="1920" height="1080" alt="Screenshot_2025-09-10_11_41_45" src="https://github.com/user-attachments/assets/6879a10c-79be-4533-b880-df2104a2caf6" /># Azure VM Hardening Lab
+# Azure VM Hardening Lab
 
 ## Objective
 This project demonstrates how to secure an Ubuntu VM on Microsoft Azure by applying basic hardening best practices:
