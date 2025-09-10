@@ -61,8 +61,10 @@ sudo ufw status
 Azure Security (NSG)
 
 - Delete the default SSH rule (Any → Any).
+  
 
 - Create a new inbound rule that allows SSH only from your public IP.
+- 
 
 Automation Script
 
