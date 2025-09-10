@@ -25,17 +25,17 @@ This project demonstrates how to secure an Ubuntu VM on Microsoft Azure by apply
 4. Note down the VM’s public IP address.  
 
 _Screenshot:_  
-![Azure VM Overview](images/azure_vm_overview.png)  
+<img width="1920" height="1080" alt="Screenshot_2025-09-10_11_27_13" src="https://github.com/user-attachments/assets/a9509812-a795-4240-81d9-cb29fc0c1045" />
 
----
 
 ## Connecting to the VM
 
 Hardening Basique
 
 Mise à jour des paquets :
-
+```
 sudo apt update && sudo apt upgrade -y
+```
 
 
 Création d’un utilisateur sudo :
