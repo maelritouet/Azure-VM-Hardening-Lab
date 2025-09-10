@@ -1,8 +1,7 @@
 #!/bin/bash
 # =========================================
 # Azure VM Hardening Script
-# Author: Mael Ritouet
-# Purpose: Basic security hardening for Ubuntu VM on Azure
+# Purpose: Basic security hardening automation for Ubuntu VM on Azure
 # =========================================
 
 echo "[*] Updating system packages..."
