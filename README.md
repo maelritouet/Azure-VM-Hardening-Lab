@@ -1,4 +1,4 @@
-# Azure VM Hardening Lab
+<img width="1920" height="1080" alt="Screenshot_2025-09-10_11_41_45" src="https://github.com/user-attachments/assets/6879a10c-79be-4533-b880-df2104a2caf6" /># Azure VM Hardening Lab
 
 ## Objective
 This project demonstrates how to secure an Ubuntu VM on Microsoft Azure by applying basic hardening best practices:
@@ -29,69 +29,58 @@ _Screenshot:_
 
 
 ## Connecting to the VM
+COnnecting to the vm using 
+```
+ssh -i ~/ssh/VM-Hardening_key.pem/ user@VM'sIPadress
+```
 
-Hardening Basique
-
-Mise à jour des paquets :
+Updating the VM :
 ```
 sudo apt update && sudo apt upgrade -y
 ```
 
 
-Création d’un utilisateur sudo :
+Configurating SSH (/etc/ssh/sshd_config) :
+```
+sudo nano /etc/ssh/sshd_config
 
-sudo adduser mael
-sudo usermod -aG sudo mael
+We change :
+PermitRootLogin prohibit-password  ->  PermitRootLogin no
+PasswordAuthentication yes  ->  PasswordAuthentication no
+```
+<img width="1920" height="1080" alt="Screenshot_2025-09-10_11_43_12" src="https://github.com/user-attachments/assets/de4d389e-cd18-4ad8-9de5-e23f8d76e550" />
 
-
-Screenshot :
-
-
-Configuration SSH (/etc/ssh/sshd_config) :
-
-PermitRootLogin no
-PasswordAuthentication no
-
-sudo systemctl restart ssh
-
-Screenshot :
-
-
-Activation du pare-feu (UFW) :
-
+Enable firewall (UFW):
+```
 sudo ufw allow OpenSSH
 sudo ufw enable
 sudo ufw status
+```
 
 
-Screenshot :
+Azure Security (NSG)
 
+- Delete the default SSH rule (Any → Any).
 
-Sécurité Azure (NSG)
+- Create a new inbound rule that allows SSH only from your public IP.
 
-Supprimez la règle SSH “Any → Any”.
+Automation Script
 
-Créez une règle autorisant SSH uniquement depuis votre IP.
-
-Screenshot :
-
-Script Automatisé
-
-Vous pouvez automatiser ces étapes avec le script hardening.sh :
-
+All steps can be automated using the hardening.sh script:
+```
 chmod +x hardening.sh
 ./hardening.sh
+```
 
-Résultat
+Rinal Result
 
-VM sécurisée avec SSH key only
+- VM secured with SSH key only
 
-Root login désactivé
+- Root login disabled
 
-Firewall activé
+- Password authentication disabled
 
-SSH limité à votre IP
+- Firewall enabled
 
-Screenshot :
-```bash
-ssh -i ~/.ssh/VM-Hardening_key.pem mael@VM_PUBLIC_IP
+- SSH restricted to your IP
+
